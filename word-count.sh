@@ -22,3 +22,12 @@ if [ ! -r  $1] ; then
      echo " $1 is not readable "
 
 fi
+if [ -d $1 ]; then
+    echo "$1---is a firectory "
+    echo "$files"
+    exit 1
+
+elif [ -f $1 ]; then
+    echo "$1 is a file"
+    exit 1
+fi 
