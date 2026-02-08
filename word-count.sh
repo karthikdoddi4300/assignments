@@ -18,7 +18,7 @@ if [! -e $1]; then
     exit 1
 fi 
 
-if [ ! -r -e $1] ; then
+if [ ! -r  $1] ; then
      echo " $1 is not readable "
 
 fi
