@@ -1,24 +1,28 @@
-#!/bin/bash 
-echo "file existence and permissions checking using shell scripting"
+#!/bin/bash
 
-files=$(ls)
- 
-
-if [ -e $1]; then 
-    echo " file  exist"
+# Check if a filename was provided as an argument
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <filename or path>"
     exit 1
-fi 
-
-if [  -r  $1] ; then
-     echo " $1 is  readable "
-
 fi
-if [ -d $1 ]; then
-    echo "$1---is a firectory "
-    echo "$files"
-    exit 1
 
-elif [ -f $1 ]; then
-    echo "$1 is a file"
-    exit 1
-fi 
+FILE="$1"
+
+# Check if the file exists
+if [ -e "$FILE" ]; then
+    echo "File: '$FILE' exists."
+    # Check permissions if it exists
+    if [ -r "$FILE" ]; then
+        echo "File is readable."
+    else
+        echo "File is not readable."
+    fi
+
+    if [ -w "$FILE" ]; then
+        echo "File is writable."
+    else
+        echo "File is not writable."
+    fi
+else
+    echo "File: '$FILE' is not present."
+fi
