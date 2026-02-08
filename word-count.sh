@@ -1,7 +1,7 @@
 #!/bin/bash 
 echo "file existence and permissions checking using shell scripting"
 
-files= $(ls)
+files=$(ls)
 
 if [ -d $1 ]; then
     echo "$1---is a firectory "
@@ -10,7 +10,7 @@ if [ -d $1 ]; then
 
 elif [ -f $1 ]; then
     echo "$1 is a file"
-    exit 
+    exit 1
 fi 
 
 if [! -e $1]; then 
